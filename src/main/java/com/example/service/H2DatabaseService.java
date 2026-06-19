@@ -1,11 +1,14 @@
 package com.example.service;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import com.example.User;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 @ApplicationScoped
 public class H2DatabaseService {
@@ -19,6 +22,7 @@ public class H2DatabaseService {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, USER, PASS);
             Statement stmt = conn.createStatement()){
 
+            stmt.execute("DROP TABLE IF EXISTS users");
             stmt.execute("CREATE TABLE users (id INT PRIMARY KEY, name VARCHAR(255))");
             stmt.execute("INSERT INTO users (id, name) VALUES (1, 'Alice')");
             stmt.execute("INSERT INTO users (id, name) VALUES (2, 'Bob')");
@@ -26,6 +30,7 @@ public class H2DatabaseService {
 
             System.out.println("H2 database is initialized with 3 users.");
         } catch (Exception e) {
+            System.err.println("Error initializing database: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -42,5 +47,23 @@ public class H2DatabaseService {
             e.printStackTrace();
         }
         return count;
+    }
+
+    public List<User> getAllUsers(){
+        List<User> users = new ArrayList<>();
+        try(Connection conn = DriverManager.getConnection(JDBC_URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT id, name FROM users")){
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                users.add(new User(id, name));
+            }
+            System.out.println("getAllUsers() returned " + users.size() + " users");
+        } catch (Exception e){
+            System.err.println("Error getting users: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return users;
     }
 }

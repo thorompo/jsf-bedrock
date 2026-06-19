@@ -1,4 +1,5 @@
 com/example/controller/RestApplication.class
 com/example/HelloBean.class
 com/example/controller/HelloResource.class
+com/example/User.class
 com/example/service/H2DatabaseService.class

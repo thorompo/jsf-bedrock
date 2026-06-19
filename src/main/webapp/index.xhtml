@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
 <h:head>
     <title>JSF Bedrock Példa</title>
 </h:head>
@@ -13,5 +14,23 @@
     </h:form>
     <br/>
     <h:outputText value="#{helloBean.name}" style="font-weight:bold; color:blue;" />
+
+    <hr/>
+
+    <h2>Adatbázis Rekordok</h2>
+    <h:panelGroup rendered="#{empty helloBean.users}">
+        <h:outputText value="Nincs megjelenitheto rekord." />
+    </h:panelGroup>
+
+    <h:dataTable value="#{helloBean.users}" var="user" border="1" cellspacing="5" rendered="#{not empty helloBean.users}">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            <h:outputText value="#{user.id}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Név</f:facet>
+            <h:outputText value="#{user.name}" />
+        </h:column>
+    </h:dataTable>
 </h:body>
 </html>
