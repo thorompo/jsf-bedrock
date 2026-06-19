@@ -1,3 +1,4 @@
-/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/pelda/HelloBean.java
-/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/pelda/api/HelloResource.java
-/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/pelda/api/RestApplication.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/HelloBean.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/controller/HelloResource.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/controller/RestApplication.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/service/H2DatabaseService.java

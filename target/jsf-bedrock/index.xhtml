@@ -7,11 +7,11 @@
 <h:body>
     <h2>Egyszerű JSF Alkalmazás</h2>
     <h:form>
-        <h:outputLabel for="nevInput" value="Írd be a neved: " />
-        <h:inputText id="nevInput" value="#{helloBean.nev}" />
-        <h:commandButton value="Köszönj!" action="#{helloBean.koszon}" />
+        <h:outputLabel for="nameInput" value="Írd be a neved: " />
+        <h:inputText id="nameInput" value="#{helloBean.name}" />
+        <h:commandButton value="Köszönj!" action="#{helloBean.greetings}" />
     </h:form>
     <br/>
-    <h:outputText value="#{helloBean.nev}" style="font-weight:bold; color:blue;" />
+    <h:outputText value="#{helloBean.name}" style="font-weight:bold; color:blue;" />
 </h:body>
 </html>
