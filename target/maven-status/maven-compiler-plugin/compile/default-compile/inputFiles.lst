@@ -1,5 +1,9 @@
-/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/HelloBean.java
-/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/User.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/bean/HelloBean.java
 /Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/controller/HelloResource.java
 /Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/controller/RestApplication.java
-/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/service/H2DatabaseService.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/controller/UserResource.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/entity/User.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/repository/H2UserRepository.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/repository/UserRepository.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/service/UserService.java
+/Users/tibor.horompo/workspace/jsf-bedrock/src/main/java/com/example/service/UserServiceImpl.java

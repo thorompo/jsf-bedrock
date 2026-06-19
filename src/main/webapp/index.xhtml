@@ -1,36 +1,71 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="jakarta.faces.html"
-      xmlns:f="jakarta.faces.core">
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets">
 <h:head>
-    <title>JSF Bedrock Példa</title>
+    <title>JSF Bedrock</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #333; }
+        table { border-collapse: collapse; margin-top: 10px; }
+        table, th, td { border: 1px solid #ddd; }
+        th, td { padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .info-box { background-color: #e8f4f8; padding: 10px; margin: 10px 0; border-left: 4px solid #2196F3; }
+        .api-link { color: #2196F3; text-decoration: none; margin: 5px 0; display: block; }
+        .api-link:hover { text-decoration: underline; }
+    </style>
 </h:head>
 <h:body>
-    <h2>Egyszerű JSF Alkalmazás</h2>
-    <h:form>
-        <h:outputLabel for="nameInput" value="Írd be a neved: " />
-        <h:inputText id="nameInput" value="#{helloBean.name}" />
-        <h:commandButton value="Köszönj!" action="#{helloBean.greetings}" />
-    </h:form>
-    <br/>
-    <h:outputText value="#{helloBean.name}" style="font-weight:bold; color:blue;" />
+    <h1>🏗️ JSF Bedrock</h1>
 
-    <hr/>
+    <div class="info-box">
+        <h2>Üdvözöm az alkalmazásban!</h2>
+        <p><strong>Aktuális üzenet: </strong> <h:outputText value="#{helloBean.greetings()}" style="font-weight:bold; color:#2196F3;" /></p>
+    </div>
 
-    <h2>Adatbázis Rekordok</h2>
+    <h2>📊 Adatbázis Rekordok</h2>
     <h:panelGroup rendered="#{empty helloBean.users}">
-        <h:outputText value="Nincs megjelenitheto rekord." />
+        <p style="color: #f44336;">Nincs megjeleníthető rekord.</p>
     </h:panelGroup>
 
-    <h:dataTable value="#{helloBean.users}" var="user" border="1" cellspacing="5" rendered="#{not empty helloBean.users}">
-        <h:column>
-            <f:facet name="header">ID</f:facet>
-            <h:outputText value="#{user.id}" />
-        </h:column>
-        <h:column>
-            <f:facet name="header">Név</f:facet>
-            <h:outputText value="#{user.name}" />
-        </h:column>
-    </h:dataTable>
+    <h:panelGroup rendered="#{not empty helloBean.users}">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Név</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ui:repeat value="#{helloBean.users}" var="user">
+                    <tr>
+                        <td><h:outputText value="#{user.id}" /></td>
+                        <td><h:outputText value="#{user.name}" /></td>
+                    </tr>
+                </ui:repeat>
+            </tbody>
+        </table>
+    </h:panelGroup>
+
+    <h2>🔗 REST API Végpontok</h2>
+    <div class="info-box">
+        <p>Az alkalmazás a következő REST API végpontokkal rendelkezik:</p>
+        <a href="/jsf-bedrock/api/hello" class="api-link">GET /api/hello - Üdvözlés API</a>
+        <a href="/jsf-bedrock/api/users" class="api-link">GET /api/users - Összes felhasználó</a>
+        <a href="/jsf-bedrock/api/users/1" class="api-link">GET /api/users/1 - Felhasználó részletei (ID: 1)</a>
+    </div>
+
+    <h2>📋 Architektúra Rétegek</h2>
+    <div class="info-box">
+        <ul>
+            <li><strong>Entity Layer:</strong> User.java - Domain objektumok</li>
+            <li><strong>Repository/DAO Layer:</strong> UserRepository, H2UserRepository - Adatbázis műveletek</li>
+            <li><strong>Service Layer:</strong> UserService, UserServiceImpl - Üzleti logika</li>
+            <li><strong>Controller Layer:</strong> UserResource, HelloResource - REST API végpontok</li>
+            <li><strong>Presentation Layer:</strong> HelloBean - JSF felület</li>
+        </ul>
+    </div>
 </h:body>
 </html>

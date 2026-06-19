@@ -1,5 +1,9 @@
-com/example/controller/RestApplication.class
-com/example/HelloBean.class
+com/example/controller/UserResource.class
+com/example/service/UserServiceImpl.class
 com/example/controller/HelloResource.class
-com/example/User.class
-com/example/service/H2DatabaseService.class
+com/example/repository/UserRepository.class
+com/example/entity/User.class
+com/example/controller/RestApplication.class
+com/example/repository/H2UserRepository.class
+com/example/service/UserService.class
+com/example/bean/HelloBean.class
