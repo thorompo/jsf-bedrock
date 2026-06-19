@@ -1,3 +1,4 @@
-com/pelda/api/RestApplication.class
-com/pelda/HelloBean.class
-com/pelda/api/HelloResource.class
+com/example/controller/RestApplication.class
+com/example/HelloBean.class
+com/example/controller/HelloResource.class
+com/example/service/H2DatabaseService.class
